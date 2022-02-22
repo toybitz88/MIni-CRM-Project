@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +20,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+
+
+//Department Resource
+Route::get('depart/{$id}/delete',[DepartmentController::class,'destroy']);
+Route::resource('depart',DepartmentController::class);
+
+//Employee Resource
+Route::get('employee/{$id}/delete',[EmmployeeController::class,'destroy']);
+Route::resource('employee',EmployeeController::class);
